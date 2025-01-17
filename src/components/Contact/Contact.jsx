@@ -1,8 +1,15 @@
 import { FaUser } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import css from "../Contact/Contact.module.css";
+import { deleteContacts, selectContacts } from "../../redux/contactsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Contact = ({ data: { name, number, id }, onDelete }) => {
+  // console.log(selectContacts);
+  // const test = useSelector(selectContacts);
+  // console.log(test);
+  const dispatch = useDispatch();
+
   return (
     <>
       <div>
@@ -17,7 +24,7 @@ const Contact = ({ data: { name, number, id }, onDelete }) => {
       </div>
       <button
         type="button"
-        onClick={() => onDelete(id)}
+        onClick={() => dispatch(deleteContacts(id))}
         className={css.contactItemBtn}
       >
         Delete
